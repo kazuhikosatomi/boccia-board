@@ -1,21 +1,23 @@
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('boccia-cache').then(function(cache) {
+self.addEventListener("install", e => {
+  e.waitUntil(
+    caches.open("boccia-club").then(cache => {
       return cache.addAll([
-        './',
-        './index.html',
-        './manifest.json',
-        './boccia_field.png',
-        './boccia_logo.png'
+        "./",
+        "./index.html",
+        "./boccia_logo.png",
+        "./boccia_logo_192.png",
+        "./boccia_logo_512.png",
+        "./boccia_field.png",
+        "./manifest.json"
       ]);
     })
   );
 });
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
+self.addEventListener("fetch", e => {
+  e.respondWith(
+    caches.match(e.request).then(response => {
+      return response || fetch(e.request);
     })
   );
 });

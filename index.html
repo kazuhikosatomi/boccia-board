@@ -3,116 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>競輪部 公式app</title>
+  <title>BOCCIA CLUB RINKAI</title>
+  <link rel="manifest" href="manifest.json" />
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-    }
-
-    .header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 6px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      height: 55px;
-    }
-
-    .right-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex-grow: 1;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    }
-
-    .player-select {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 6px 12px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.2s;
-      min-width: 80px;
-      flex: 1;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    select#playerCount {
-      font-size: 14px;
-      padding: 6px 10px;
-    }
-
-    #board {
-      width: 100vw;
-      height: calc(100vh - 130px);
-      background-color: #cccccc;
-      position: relative;
       overflow: hidden;
-      touch-action: none;
     }
 
-    .player.dragging {
-      scale: 1.4;
-      transition: scale 0.2s ease;
-      z-index: 1000;
-    }
-
-    @media (max-width: 600px) {
-      button {
-        font-size: 12px;
-        min-width: 72px;
-        padding: 5px 10px;
-      }
-
-      .logo {
-        height: 48px;
-      }
-
-      #board {
-        height: calc(100vh - 120px);
-      }
-    }
-  </style>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="icon" href="boccia_logo_192.png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="boccia_logo_192.png" />
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-</head>
-<body>
-
-  <body style="margin: 0; overflow: hidden;">
-    <img src="boccia_logo.png" id="logo" style="
+    #logo {
       position: absolute;
       top: 10px;
       left: 10px;
-      height: 80px;
+      height: 70px;
       cursor: pointer;
       z-index: 1000;
-    " onclick="location.reload();" alt="Boccia Logo" />
-    <div id="board" style="
+    }
+
+    #board {
       position: relative;
       width: 100vw;
       height: 100vh;
@@ -120,59 +29,69 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-    ">
-      <!-- Red balls -->
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 120px;"></div>
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 155px;"></div>
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 190px;"></div>
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 225px;"></div>
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 260px;"></div>
-      <div class="ball red-ball" style="background-color: red; left: 75px; top: 295px;"></div>
-
-      <!-- White jack ball -->
-      <div id="whiteBall" class="ball" style="background-color: white; left: 75px; top:425px;"></div>
-
-      <!-- Blue balls -->
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 530px;"></div>
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 565px;"></div>
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 600px;"></div>
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 635px;"></div>
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 670px;"></div>
-      <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 705px;"></div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-    <script>
-      document.querySelectorAll('.ball').forEach(el => {
-        interact(el).draggable({
-          listeners: {
-            move (event) {
-              const target = event.target
-              const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-              const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-              target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
-              target.setAttribute('data-x', x)
-              target.setAttribute('data-y', y)
-            }
-          }
-        })
-      });
-    </script>
-    <style>
-      .ball {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        position: absolute;
-        top: 50px;
-        transition: transform 0.2s ease;
-      }
-    </style>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('✅ Service Worker registered', reg))
-        .catch(err => console.warn('❌ Service Worker registration failed', err));
+      touch-action: none;
+      overflow: hidden;
     }
+
+    .ball {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: absolute;
+      transition: transform 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      .ball {
+        width: 24px;
+        height: 24px;
+      }
+
+      #logo {
+        height: 55px;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+  <img src="boccia_logo.png" id="logo" onclick="location.reload();" alt="Boccia Logo" />
+  <div id="board">
+    <!-- Red balls -->
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 120px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 155px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 190px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 225px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 260px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 75px; top: 295px;"></div>
+
+    <!-- White jack ball -->
+    <div id="whiteBall" class="ball" style="background-color: white; left: 75px; top: 425px;"></div>
+
+    <!-- Blue balls -->
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 530px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 565px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 600px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 635px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 670px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 75px; top: 705px;"></div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.ball').forEach(el => {
+      interact(el).draggable({
+        listeners: {
+          move (event) {
+            const target = event.target;
+            const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+            const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+            target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+          }
+        }
+      });
+    });
   </script>
-  </body>
+</body>
 </html>
