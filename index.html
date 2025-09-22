@@ -7,71 +7,70 @@
   <link rel="manifest" href="manifest.json" />
   <style>
     html, body {
-      width: 100%;
-      height: 100%;
-      background-color: #000; /* 任意。フィールド外の色 */
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
       font-family: sans-serif;
     }
 
     #logo {
       position: absolute;
-      top: 1%;
-      right: 1%;
-      height: 5%;
+      top: 10px;
+      right: 10px;
+      height: 60px;
       cursor: pointer;
       z-index: 1000;
     }
 
     #board {
-      aspect-ratio: 9 / 16;
-      height: 100vh;
-      max-height: 100vh;
-      max-width: calc(100vh * 9 / 16);
+      width: 540px;
+      height: 960px;
       background-image: url('boccia_field.png');
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: top left;
+      background-position: center;
       position: relative;
+      margin: 0 auto;
       touch-action: none;
       overflow: hidden;
-      margin-left: 0;
     }
 
     .ball {
-      width: 3.0%;
-      aspect-ratio: 1 / 1;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       position: absolute;
       transition: transform 0.2s ease;
     }
-
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script>
+    document.write(`<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js?v=${Date.now()}"\><\/script>`);
+  </script>
 </head>
 <body>
-  <img src="boccia_logo.png" id="logo" onclick="location.reload();" alt="Boccia Logo" />
+  <script>
+    const timestamp = Date.now();
+    document.write(`<img src="boccia_logo.png?v=${timestamp}" id="logo" onclick="location.reload();" alt="Boccia Logo" />`);
+  </script>
   <div id="board">
     <!-- Red balls -->
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 40px;"></div>
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 60px;"></div>
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 80px;"></div>
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 100px;"></div>
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 120px;"></div>
-    <div class="ball red-ball" style="background-color: red; left: 0px; top: 140px;"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 140px);"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 120px);"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 100px);"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 80px);"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 60px);"></div>
+    <div class="ball red-ball" style="background-color: red; left: 0px; top: calc(50% - 40px);"></div>
 
     <!-- White jack ball -->
-    <div id="whiteBall" class="ball" style="background-color: white; left: 0px; top: 170px;"></div>
+    <div id="whiteBall" class="ball" style="background-color: white; left: 0px; top: calc(50%);"></div>
 
     <!-- Blue balls -->
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 200px;"></div>
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 220px;"></div>
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 240px;"></div>
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 260px;"></div>
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 280px;"></div>
-    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: 300px;"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 40px);"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 60px);"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 80px);"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 100px);"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 120px);"></div>
+    <div class="ball blue-ball" style="background-color: blue; left: 0px; top: calc(50% + 140px);"></div>
   </div>
 
   <script>
